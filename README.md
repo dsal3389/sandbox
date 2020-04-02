@@ -1,2 +1,9 @@
 # sandbox
-when I want to learn I solve challenges and create mini programs
+
+some simple "projects" that I do, in many languages 
+
+  * c
+  * python
+  * js / typescript
+  * bash?
+
