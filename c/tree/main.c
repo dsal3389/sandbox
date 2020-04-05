@@ -5,7 +5,8 @@
 #include <errno.h>
 
 
-#define TAB_CHUNK_SIZE 1
+#define DIR_CHAR '-'
+#define FILE_CHAR '|'
 
 void print_dir(char *path, char *pname, int tabs);
 int is_dir(const char *path);
@@ -30,22 +31,19 @@ void print_dir(char *path, char *pname, int tabs){
     struct dirent *ep;
     d = opendir(path);
 
-    printf("%*c %s\n", tabs, '-', pname);
+    printf("%*c %s\n", tabs, DIR_CHAR, pname);
     while(ep = readdir(d)){
-        char *name = ep -> d_name;
         char npath[255*tabs];
 
-        if(!strcmp(name, ".") || !strcmp(name, ".."))
+        if(!strcmp(ep -> d_name, ".") || !strcmp(ep -> d_name, ".."))
             continue;
 
-        snprintf(npath, sizeof(npath), "%s/%s", path, name);
+        snprintf(npath, sizeof(npath), "%s/%s", path, ep -> d_name);
 
-        if(is_dir(npath)){
-            print_dir(npath, name, tabs+1);
-        }
-        else{
-            printf("%*c %s\n", tabs, '|', name);
-        }
+        if(ep -> d_type == DT_DIR)
+            print_dir(npath, ep -> d_name, tabs+1);
+        else
+            printf("%*c %s\n", tabs, FILE_CHAR, ep -> d_name);
     }
     closedir(d);
 }
