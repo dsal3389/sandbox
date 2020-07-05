@@ -6,8 +6,6 @@ from PIL import Image
 SIZE_WIDTH = 120
 SIZE_HEIGHT = 120
 
-LIVE = False
-
 
 def _check_file_exists(filename):
     return os.path.exists(filename)
@@ -72,6 +70,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         raise IndexError("Missing argument, image name")
     filename = sys.argv[1]
-
-    LIVE = True
     main(filename)
