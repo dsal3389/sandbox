@@ -1,0 +1,15 @@
+
+hello world this is a test file
+the default chunk size is 256 bytes, i donno how many bytes are in this file
+didnt readlly count but yeah this this a test file so 
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
